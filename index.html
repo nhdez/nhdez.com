@@ -35,6 +35,7 @@
         --accent-color: #4f46e5;
         --hover-color: #4338ca;
         --border-color: #e5e7eb;
+        --skill-bg: #f3f4f6;
       }
       
       .dark {
@@ -44,6 +45,7 @@
         --accent-color: #818cf8;
         --hover-color: #a5b4fc;
         --border-color: #374151;
+        --skill-bg: #2d3748;
       }
       
       body {
@@ -57,6 +59,11 @@
         background-color: var(--container-bg);
         border-color: var(--border-color);
       }
+          
+          a {
+        color: var(--accent-color);
+        transition: color 0.3s;
+      }
       
       a:hover {
         color: var(--hover-color);
@@ -66,7 +73,7 @@
         border-color: var(--border-color);
       }
       
-      .text-gray-700 {
+      .text-gray-700, .text-gray-800 {
         color: var(--text-color);
       }
       
@@ -74,7 +81,42 @@
         color: var(--text-color);
         opacity: 0.8;
       }
-        
+      
+      /* Fix skill badges in dark mode */
+      .bg-gray-100 {
+        background-color: var(--skill-bg);
+        border-color: var(--border-color);
+      }
+      
+      /* Fix buttons positioning and styling */
+      .theme-buttons {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        gap: 0.5rem;
+        z-index: 50;
+      }
+      
+      .theme-button {
+        padding: 0.5rem;
+        border-radius: 9999px;
+        background-color: var(--container-bg);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      
+      .theme-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
       .avatar {
         width: 150px;
         height: 150px;
@@ -83,32 +125,32 @@
       }
 
       @media print {
-      body {
-        background-color: white !important;
-        color: black !important;
-      }
-      
-      .resume-container {
-        box-shadow: none !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 0.5in !important;
-        background-color: white !important;
-      }
-      
-      .no-print {
-        display: none !important;
-      }
-      
-      a {
-        color: #1f2937 !important;
-        text-decoration: none !important;
-      }
-      
-      .skill-badge {
-        border: 1px solid #ddd !important;
-        background-color: #f9fafb !important;
-      }
+        body {
+          background-color: white !important;
+          color: black !important;
+        }
+        
+        .resume-container {
+          box-shadow: none !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          padding: 0.5in !important;
+          background-color: white !important;
+        }
+        
+        .no-print {
+          display: none !important;
+        }
+        
+        a {
+          color: #1f2937 !important;
+          text-decoration: none !important;
+        }
+        
+        .skill-badge {
+          border: 1px solid #ddd !important;
+          background-color: #f9fafb !important;
+        }
     }
   </style>
 
@@ -151,29 +193,30 @@
 <body class="bg-gray-100 text-gray-800 mb-6">
   <!-- Container -->
   <div class="max-w-5xl mx-auto mt-8 p-6 bg-white shadow-md rounded-lg">
-    <button 
-      id="theme-toggle" 
-      class="fixed top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 shadow-md"
-      onclick="toggleTheme()"
-      aria-label="Toggle dark mode"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-      </svg>
-    </button>
-
-    <button 
-  class="fixed top-4 right-16 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 shadow-md no-print"
-  onclick="window.print()"
-  aria-label="Print resume"
->
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-  </svg>
-</button>
+    <div class="theme-buttons no-print">
+      <button 
+        class="theme-button"
+        onclick="toggleTheme()"
+        aria-label="Toggle dark mode"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+    
+      <button 
+        class="theme-button"
+        onclick="window.print()"
+        aria-label="Print resume"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+        </svg>
+      </button>
+    </div>
     
     <!-- Header / Introduction Section -->
     <div class="flex flex-col md:flex-row md:space-x-8">
