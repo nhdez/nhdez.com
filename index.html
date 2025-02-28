@@ -2,6 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="description" content="Nelson Hernandez Casanova - Experienced Software Developer and Architect with expertise in Ruby on Rails, C#/.NET, and database engineering">
+  <meta name="keywords" content="software developer, software architect, Ruby on Rails, C#, .NET, database engineer, web development, API integration, PostgreSQL, SQL Server">
+  <meta name="author" content="Nelson Hernandez Casanova">
+  <!-- Open Graph tags for social media -->
+  <meta property="og:title" content="Nelson Hernandez Casanova - Software Developer">
+  <meta property="og:description" content="Experienced Software Developer with 10+ years building complex systems and applications">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nhdez.com">
+  <meta property="og:image" content="https://nhdez.com/profile-image.jpg">
+  <!-- Twitter Card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nelson Hernandez Casanova - Software Developer">
+  <meta name="twitter:description" content="Experienced Software Developer with 10+ years building complex systems and applications">
+  <meta name="twitter:image" content="https://nhdez.com/profile-image.jpg">
   <link rel="icon" 
     type="image/svg+xml"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22><text x=%220%22 y=%2214%22 font-size=%2214%22>🚀</text></svg>" />
@@ -10,29 +24,157 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" 
-    rel="stylesheet"
-  >
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
+      :root {
+        --bg-color: #f3f4f6;
+        --container-bg: #ffffff;
+        --text-color: #1f2937;
+        --accent-color: #4f46e5;
+        --hover-color: #4338ca;
+        --border-color: #e5e7eb;
+      }
+      
+      .dark {
+        --bg-color: #111827;
+        --container-bg: #1f2937;
+        --text-color: #f3f4f6;
+        --accent-color: #818cf8;
+        --hover-color: #a5b4fc;
+        --border-color: #374151;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: background-color 0.3s, color 0.3s;
+      }
+      
+      .resume-container {
+        background-color: var(--container-bg);
+        border-color: var(--border-color);
+      }
+      
+      a:hover {
+        color: var(--hover-color);
+      }
+      
+      .border-gray-200 {
+        border-color: var(--border-color);
+      }
+      
+      .text-gray-700 {
+        color: var(--text-color);
+      }
+      
+      .text-gray-600 {
+        color: var(--text-color);
+        opacity: 0.8;
+      }
+        
+      .avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 9999px;
+        object-fit: cover;
+      }
 
-    .avatar {
-      width: 150px;
-      height: 150px;
-      border-radius: 9999px;
-      object-fit: cover;
+      @media print {
+      body {
+        background-color: white !important;
+        color: black !important;
+      }
+      
+      .resume-container {
+        box-shadow: none !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0.5in !important;
+        background-color: white !important;
+      }
+      
+      .no-print {
+        display: none !important;
+      }
+      
+      a {
+        color: #1f2937 !important;
+        text-decoration: none !important;
+      }
+      
+      .skill-badge {
+        border: 1px solid #ddd !important;
+        background-color: #f9fafb !important;
+      }
     }
   </style>
+
+  <script>
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('theme');
+    const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+    
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+  </script>
+
+  <!-- Structured data for better Google indexing -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": "Nelson Hernandez Casanova",
+      "url": "https://nhdez.com",
+      "image": "https://nhdez.com/profile-image.jpg",
+      "jobTitle": "Software Developer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Falkland Islands Government"
+      },
+      "sameAs": [
+        "https://github.com/nhdez",
+        "https://www.linkedin.com/in/nhdezc"
+      ],
+      "knowsAbout": ["Ruby on Rails", "C#", ".NET", "PostgreSQL", "SQL Server", "Web Development"]
+    }
+  </script>
 </head>
 <body class="bg-gray-100 text-gray-800 mb-6">
   <!-- Container -->
   <div class="max-w-5xl mx-auto mt-8 p-6 bg-white shadow-md rounded-lg">
+    <button 
+      id="theme-toggle" 
+      class="fixed top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 shadow-md"
+      onclick="toggleTheme()"
+      aria-label="Toggle dark mode"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+      </svg>
+    </button>
+
+    <button 
+  class="fixed top-4 right-16 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 shadow-md no-print"
+  onclick="window.print()"
+  aria-label="Print resume"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+  </svg>
+</button>
+    
     <!-- Header / Introduction Section -->
     <div class="flex flex-col md:flex-row md:space-x-8">
       <!-- Left column: Photo & Basic Info -->
