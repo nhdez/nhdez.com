@@ -39,13 +39,22 @@
       }
       
       .dark {
-        --bg-color: #111827;
-        --container-bg: #1f2937;
-        --text-color: #f3f4f6;
-        --accent-color: #818cf8;
-        --hover-color: #a5b4fc;
-        --border-color: #374151;
-        --skill-bg: #2d3748;
+        --bg-color: #111827;     
+        --container-bg: #0f172a;   
+        --text-color: #f3f4f6;    
+        --accent-color: #818cf8;  
+        --hover-color: #a5b4fc;   
+        --border-color: #374151;   
+        --skill-bg: #2d3748;     
+      }
+
+      .dark .bg-white {
+        background-color: var(--container-bg) !important;
+      }
+      
+      .dark .text-gray-700, 
+      .dark .text-gray-800 {
+        color: var(--text-color) !important;
       }
       
       body {
@@ -82,13 +91,11 @@
         opacity: 0.8;
       }
       
-      /* Fix skill badges in dark mode */
       .bg-gray-100 {
         background-color: var(--skill-bg);
         border-color: var(--border-color);
       }
-      
-      /* Fix buttons positioning and styling */
+
       .theme-buttons {
         position: fixed;
         top: 1rem;
